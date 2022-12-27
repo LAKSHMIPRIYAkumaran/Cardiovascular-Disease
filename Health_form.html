@@ -1,0 +1,87 @@
+!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health_form</title>
+</head>
+<body>
+<form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+    <br><hr>
+	<h3>Age : </h3>
+	<input name="age" type="Number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<h3>Sex : </h3>
+	<h4>(1-Male, 0-Female)</h4>
+	<input name="sex" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </select>
+    <br><hr>
+	<h3>Chest Pain Type : </h3>
+	<h4>(1-Atypical Angina, 2-Non-Angina, 3-Typical Angina, 0-Asymptomsatic)</h4>
+    <input name="cp" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">	
+    <br><hr>
+	<h3>Resting Blood Pressure (mmHg) : </h3>
+	<input name="trestbps" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<h3>Cholestrol Level (mg/dl) : </h3>
+	<input name="chol" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<h3>Fasting Blood Sugar (mg/dl) : </h3>
+	<h4>(0-False, 1-True)</h4>
+	<input name="fbs" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<h3>Resting Electrocardiographic Results : </h3>
+	<h4>(0-Left Ventricular Hypertrophy, 1-Normal, 2-ST-T wave abnormality(T wave inversion / ST elevation or depression > 0.05mV))</h4>
+    <input name="restecg" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<br><hr>
+	<h3>Maximum Heart Rate Achieved : </h3>
+	<input name="thalach" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<br><hr>
+	<h3>Angina : </h3>
+	<h4>(1-Yes, 0-No)<h4>
+	<input name="exang" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">	
+    <br><hr>
+	<h3>ST with ECG plot : </h3>
+	<h4>(ST relates to positions on the ECG plot)<h4>
+	<input name="oldpeak" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<h3>Peak Slope : </h3>
+	<h4>(Slope of the peak exercise ST segment)<h4>
+	<h4>(1-Flat, 2-Upsloping, 0-Downsloping)<h4>
+	<input name="slope" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<h3>Number of Vessel Colored by Flouroscopy : </h3>
+	<h4>(Ranges Between 0 to 3)<h4>
+	<input name="ca" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+	<h3>Thalassemia value: </h3>
+	<h4>(1-Fixed Defect(No blood flow in some part of the heart), 2-Normal blood flow, 3-Reversible defect(A blood flow is observed but it is not normal))<h4>
+    <input name="thal" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <br><hr>
+    <div class="col-auto">
+        <button type="submit" name="Target_button" value="Save&Next">Confirm Submission</button>
+    </div>
+</form>
+
+{% if result %}
+<h2>The Cardiovasucular Result is: {{ result }}</h2>
+<h1> 0 means No cardiovascular disease  1 means presence of cardiovascular disease </h1>
+{% endif %}
+
+</body>
+</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
