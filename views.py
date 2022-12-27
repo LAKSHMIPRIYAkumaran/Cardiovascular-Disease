@@ -4,7 +4,7 @@ import pickle, os, random
 # Finding Cardiovascular Disease:
 def Cardiovascular_finder(request):
     if request.method == 'POST':
-        if request.POST.get('Target_button'):
+        if  request.POST.get('Target_button'):
             age = request.POST.get('age')
             sex = request.POST.get('sex')
             cp = request.POST.get('cp')
@@ -20,7 +20,7 @@ def Cardiovascular_finder(request):
             thal = request.POST.get('thal')
             # print(name)
 
-            results = Finder( age, sex, cp, trestbps, chol, fbs,restecg,thalach, exang, oldpeak, slope, ca, thal)
+            results = Finder(age, sex, cp, trestbps, fbs,restecg,chol,thalach, exang, oldpeak, slope, ca, thal)
             print(results)
             results = str(results[0])
         else:
@@ -33,17 +33,14 @@ def Cardiovascular_finder(request):
 
 
 def Finder(age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal ):
-    df = pd.DataFrame(columns=[ 'age','sex', 'cp','trestbps', 'chol', 'fbs', 'restecg','thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal'])
+    df = pd.DataFrame(columns=['age','sex', 'cp','trestbps', 'chol', 'fbs', 'restecg','thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal'])
     df2= {'age': age, 'sex': sex, 'cp': cp, 'trestbps': trestbps, 'chol': chol, 'fbs': fbs, 'restecg':restecg, 'thalach':thalach, 'exang':exang, 'oldpeak': oldpeak, 'slope':slope, 'ca':ca, 'thal':thal}
     df = df.append(df2, ignore_index=True)
-
     # load the model from disk
     filename = os.path.join(os.path.dirname(os.path.dirname(__file__)), r'heart\Finalized_model_RF.pickle')
     loaded_model = pickle.load(open(filename, 'rb'))
     res = loaded_model.predict(df)
     print(res)
     return res
-
-
 
 
